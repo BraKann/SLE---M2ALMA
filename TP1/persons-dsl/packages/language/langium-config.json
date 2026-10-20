@@ -1,0 +1,16 @@
+{
+    "projectName": "PersonsDsl",
+    "languages": [
+        {
+            "id": "persons-dsl",
+            "grammar": "src/persons-dsl.langium",
+            "fileExtensions": [
+                ".persons"
+            ],
+            "textMate": {
+                "out": "syntaxes/persons-dsl.tmLanguage.json"
+            }
+        }
+    ],
+    "out": "src/generated"
+}

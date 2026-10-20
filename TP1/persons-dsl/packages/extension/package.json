@@ -1,0 +1,61 @@
+{
+    "name": "vscode-persons-dsl",
+    "description": "The extension specific package",
+    "version": "0.0.1",
+    "displayName": "persons-dsl",
+    "type": "module",
+    "engines": {
+        "vscode": "^1.91.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "persons-dsl",
+                "aliases": [
+                    "Persons DSL",
+                    "persons-dsl"
+                ],
+                "extensions": [
+                    ".persons"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "persons-dsl",
+                "scopeName": "source.persons-dsl",
+                "path": "syntaxes/persons-dsl.tmLanguage.json"
+            }
+        ]
+    },
+    "activationEvents": [
+        "onLanguage:persons-dsl"
+    ],
+    "main": "./out/extension/main.cjs",
+    "scripts": {
+        "clean": "shx rm -fr *.tsbuildinfo out syntaxes",
+        "vscode:prepublish": "npm run build",
+        "build:prepare": "shx mkdir -p ./syntaxes/ && shx cp -f ../language/syntaxes/persons-dsl.tmLanguage.json ./syntaxes/persons-dsl.tmLanguage.json",
+        "build": "npm run build:prepare && tsc -b tsconfig.json && node esbuild.mjs",
+        "build:clean": "npm run clean && npm run build",
+        "watch": "npm run build:prepare && concurrently -n tsc,esbuild -c blue,yellow \"tsc -b tsconfig.json --watch\" \"node esbuild.mjs --watch\""
+    },
+    "dependencies": {
+        "persons-dsl-language": "0.0.1",
+        "vscode-languageclient": "~10.1.0",
+        "vscode-languageserver": "~10.1.0"
+    },
+    "devDependencies": {
+        "@types/vscode": "~1.91.0",
+        "@vscode/vsce": "^4.0.0",
+        "concurrently": "~10.0.4",
+        "esbuild": "0.28.2"
+    },
+    "vsce": {
+        "dependencies": false
+    }
+}
