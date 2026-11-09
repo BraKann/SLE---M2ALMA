@@ -1,0 +1,16 @@
+{
+    "projectName": "DialogueDslV1",
+    "languages": [
+        {
+            "id": "dialogue-dsl-v-1",
+            "grammar": "src/dialogue-dsl-v-1.langium",
+            "fileExtensions": [
+                ".dialogv1"
+            ],
+            "textMate": {
+                "out": "syntaxes/dialogue-dsl-v-1.tmLanguage.json"
+            }
+        }
+    ],
+    "out": "src/generated"
+}
